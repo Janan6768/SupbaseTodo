@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="dark">
+<head>
+  <meta charset="utf-8" />
+  <title>Supabase Todo App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center">Todo App — Supabase (JS + Tailwind)</h1>
+
+    <!-- Auth area -->
+    <div id="auth" class="grid md:grid-cols-2 gap-6 mb-6">
+      <form id="signupForm" class="p-4 bg-slate-800 rounded-lg shadow">
+        <h2 class="font-semibold mb-3">Sign up</h2>
+        <input id="signupEmail" placeholder="Email" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <input id="signupPassword" placeholder="Password" type="password" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <button class="bg-green-600 hover:bg-green-500 text-white px-3 py-2 rounded w-full">Sign up</button>
+        <p id="signupMsg" class="text-sm mt-2 text-red-400"></p>
+      </form>
+
+      <form id="signinForm" class="p-4 bg-slate-800 rounded-lg shadow">
+        <h2 class="font-semibold mb-3">Sign in</h2>
+        <input id="signinEmail" placeholder="Email" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <input id="signinPassword" placeholder="Password" type="password" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <button class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-2 rounded w-full">Sign in</button>
+        <p id="signinMsg" class="text-sm mt-2 text-red-400"></p>
+      </form>
+    </div>
+
+    <!-- Logged in UI -->
+    <div id="appUI" class="hidden">
+      <div class="flex items-center justify-between mb-6">
+        <span id="userEmail" class="font-medium"></span>
+        <button id="signOutBtn" class="text-sm bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded">Sign Out</button>
+      </div>
+
+      <!-- Add todo -->
+      <form id="todoForm" class="bg-slate-800 p-4 rounded-lg shadow mb-6">
+        <h3 class="font-semibold mb-3">Add Todo</h3>
+        <input id="title" placeholder="Title" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" required />
+        <textarea id="description" placeholder="Description" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded"></textarea>
+
+        <div class="mb-3">
+          <input id="imageInput" type="file" accept="image/*" class="text-sm" />
+        </div>
+        <div class="mb-3">
+          <img id="preview" class="max-h-40 rounded hidden" alt="preview" />
+        </div>
+
+        <!-- Progress bar -->
+        <div id="progressBar" class="hidden w-full bg-slate-700 h-2 rounded mb-3">
+          <div class="bg-indigo-500 h-2 rounded transition-all duration-700 ease-in-out" style="width:0%"></div>
+        </div>
+
+        <button class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded">Add</button>
+        <p id="todoMsg" class="text-sm mt-2 text-red-400"></p>
+      </form>
+
+      <!-- Todos list -->
+      <div class="bg-slate-800 rounded-lg shadow p-4 overflow-x-auto">
+        <h3 class="font-semibold mb-3">Your Todos</h3>
+        <table class="w-full text-left border-collapse text-sm md:text-base">
+          <thead class="text-slate-400 border-b border-slate-700">
+            <tr>
+              <th class="p-2">Title</th>
+              <th class="p-2">Image</th>
+              <th class="p-2">Description</th>
+              <th class="p-2">Created</th>
+              <th class="p-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="todosBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+    <div class="bg-slate-800 p-6 rounded-lg shadow w-full max-w-md">
+      <h3 class="text-xl font-semibold mb-4">Edit Todo</h3>
+      <input id="editTitle" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+      <textarea id="editDesc" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded"></textarea>
+      <input id="editImageInput" type="file" accept="image/*" class="text-sm mb-3" />
+      <img id="editPreview" class="max-h-40 rounded hidden mb-3" />
+      <div id="editProgress" class="hidden w-full bg-slate-700 h-2 rounded mb-3">
+        <div class="bg-indigo-500 h-2 rounded transition-all duration-700 ease-in-out" style="width:0%"></div>
+      </div>
+      <div class="flex justify-end gap-2">
+        <button id="cancelEdit" class="bg-gray-600 px-4 py-2 rounded">Cancel</button>
+        <button id="saveEdit" class="bg-green-600 px-4 py-2 rounded">Save</button>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
