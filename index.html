@@ -1,11 +1,13 @@
 <!doctype html>
 <html class="dark">
+
 <head>
   <meta charset="utf-8" />
   <title>Supabase Todo App</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-slate-900 text-slate-100 min-h-screen p-6">
   <div class="max-w-5xl mx-auto">
     <h1 class="text-3xl font-bold mb-6 text-center">Todo App — Supabase (JS + Tailwind)</h1>
@@ -14,16 +16,20 @@
     <div id="auth" class="grid md:grid-cols-2 gap-6 mb-6">
       <form id="signupForm" class="p-4 bg-slate-800 rounded-lg shadow">
         <h2 class="font-semibold mb-3">Sign up</h2>
-        <input id="signupEmail" placeholder="Email" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
-        <input id="signupPassword" placeholder="Password" type="password" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <input id="signupEmail" placeholder="Email"
+          class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <input id="signupPassword" placeholder="Password" type="password"
+          class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
         <button class="bg-green-600 hover:bg-green-500 text-white px-3 py-2 rounded w-full">Sign up</button>
         <p id="signupMsg" class="text-sm mt-2 text-red-400"></p>
       </form>
 
       <form id="signinForm" class="p-4 bg-slate-800 rounded-lg shadow">
         <h2 class="font-semibold mb-3">Sign in</h2>
-        <input id="signinEmail" placeholder="Email" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
-        <input id="signinPassword" placeholder="Password" type="password" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <input id="signinEmail" placeholder="Email"
+          class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
+        <input id="signinPassword" placeholder="Password" type="password"
+          class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" />
         <button class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-2 rounded w-full">Sign in</button>
         <p id="signinMsg" class="text-sm mt-2 text-red-400"></p>
       </form>
@@ -33,14 +39,17 @@
     <div id="appUI" class="hidden">
       <div class="flex items-center justify-between mb-6">
         <span id="userEmail" class="font-medium"></span>
-        <button id="signOutBtn" class="text-sm bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded">Sign Out</button>
+        <button id="signOutBtn" class="text-sm bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded">Sign
+          Out</button>
       </div>
 
       <!-- Add todo -->
       <form id="todoForm" class="bg-slate-800 p-4 rounded-lg shadow mb-6">
         <h3 class="font-semibold mb-3">Add Todo</h3>
-        <input id="title" placeholder="Title" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded" required />
-        <textarea id="description" placeholder="Description" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded"></textarea>
+        <input id="title" placeholder="Title" class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded"
+          required />
+        <textarea id="description" placeholder="Description"
+          class="w-full mb-3 p-2 bg-slate-700 border border-slate-600 rounded"></textarea>
 
         <div class="mb-3">
           <input id="imageInput" type="file" accept="image/*" class="text-sm" />
@@ -94,8 +103,17 @@
       </div>
     </div>
   </div>
+  
+  <!-- Toast Container -->
+  <div id="toast"
+    class="fixed bottom-4 right-4 opacity-0 px-4 py-2 rounded bg-green-600 text-white shadow-lg transition-opacity duration-500">
+    ✅ Action done!
+  </div>
+
+
   <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
   <script type="module" src="app.js"></script>
 
 </body>
+
 </html>
